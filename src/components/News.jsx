@@ -6,7 +6,7 @@ export class News extends Component {
     return (
       <div className="container my-3">
         <h1>NewsWorld - Top Headlines</h1>
-        <div className="row">
+        <div className="row g-3">
           <div className="col-md-3">
             <NewsItem title="MyTitle" description="mydesc" />
           </div>
