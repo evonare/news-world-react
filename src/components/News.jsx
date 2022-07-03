@@ -82,26 +82,22 @@ export class News extends Component {
     return (
       <div className="container my-3">
         <h1>NewsWorld - Top Headlines</h1>
-        <div className="row g-3">
-          <div className="col-md-3">
-            <NewsItem
-              title="MyTitle"
-              description="mydesc"
-              imageUrl="https://talksport.com/wp-content/uploads/sites/5/2022/07/crop-1141691.jpg?strip=all&quality=100&w=1920&h=1080&crop=1"
-            />
-          </div>
-          <div className="col-md-3">
-            <NewsItem title="MyTitle" description="mydesc" newsUrl="todo"/>
-          </div>
-          <div className="col-md-3">
-            <NewsItem title="MyTitle" description="mydesc" />
-          </div>
-          <div className="col-md-3">
-            <NewsItem title="MyTitle" description="mydesc" />
-          </div>
-          <div className="col-md-3">
-            <NewsItem title="MyTitle" description="mydesc" />
-          </div>
+        <div className="row">
+          {this.state.articles.map((element) => {
+            return (
+              <div className="col-md-3" key={element.url}>
+                <NewsItem
+                  title={element.title}
+                  description={element.description}
+                  imageUrl={element.urlToImage}
+                  newsUrl={element.url}
+                />
+              </div>
+            );
+              
+          })}
+
+          
         </div>
       </div>
     );
