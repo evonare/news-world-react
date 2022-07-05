@@ -5,17 +5,15 @@ import PropTypes from 'prop-types'
 
 
 export class News extends Component {
-  static defaultProps = {
-    country: "in",
-    pageSize: 8,
-    category: "general",
-    key: "db1a201e0e1f4f1793d7c37f91cd7b5d",
-  };
+  // static defaultProps = {
+  //   country: "in",
+  //   pageSize: 8,
+  //   category: "general",
+  // };
   static defaultProps = {
     country: PropTypes.string,
     pageSize: PropTypes.number,
     category: PropTypes.string,
-    key: PropTypes.string,
   };
   constructor() {
     super();
@@ -97,6 +95,8 @@ export class News extends Component {
                     }
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
+                    author={element.author}
+                    date={element.publishedAt}
                   />
                 </div>
               );
