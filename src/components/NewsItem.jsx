@@ -6,11 +6,11 @@ export class NewsItem extends Component {
       let  { title, description, imageUrl, newsUrl }=this.props;
     return (
       <div className="my-3">
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card">
           <img
             src={
               !imageUrl
-                ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqpJBS6JfW6cqlU6qgqQdIz0Rc4jWD1x2yhA&usqp=CAU"
+                ? "https://images.moneycontrol.com/static-mcnews/2022/04/fandosensexniftyderivative-770x433.jpg"
                 : imageUrl
             }
             className="card-img-top"
