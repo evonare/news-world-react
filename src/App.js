@@ -2,12 +2,13 @@ import "./App.css";
 import React, { Component } from "react";
 import NavBar from "./components/NavBar";
 import News from "./components/News";
+
 import { BrowserRouter as Router,  Route, Switch} from "react-router-dom";
 
 export default class App extends Component {
   render() {
     return (
-        <div>
+      <div>
       <Router>
           <NavBar />
           <Switch>
@@ -20,7 +21,7 @@ export default class App extends Component {
             <Route path="/sports"><News pageSize="5" country="in" category="sports"/></Route>
             <Route path="/technology"><News pageSize="5" country="in" category="technology"/></Route>
           </Switch>
-      </Router>
+          </Router>
         </div>
     );
   }
