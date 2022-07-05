@@ -76,7 +76,7 @@ export class News extends Component {
     console.log("hello i am constructor");
         this.state = {
           articles: this.articles,
-          loading: false,
+          loading: true,
           page: 1
         }
   }
@@ -109,7 +109,7 @@ export class News extends Component {
      });
   }
   handleNextClick = async () => {
-    if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.state.pageSize))) {
+    if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
       let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=db1a201e0e1f4f1793d7c37f91cd7b5d&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
       this.setState({ loading: true });
       let data = await fetch(url);
@@ -125,9 +125,9 @@ export class News extends Component {
     return (
       <div className="container my-3">
         <h1 className="text-center">NewsWorld - Top Headlines</h1>
-        <Spinner/>
+        {this.state.loading && <Spinner/>}
         <div className="row">
-          {this.state.articles.map((element) => {
+          {!this.state.loading && this.state.articles.map((element) => {
             return (
               <div className="col-md-4" key={element.url}>
                 <NewsItem
