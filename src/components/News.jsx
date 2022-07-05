@@ -26,6 +26,9 @@ export class News extends Component {
   }
 
   // --life cycle method
+
+
+  
   async componentDidMount() {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=db1a201e0e1f4f1793d7c37f91cd7b5d&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
