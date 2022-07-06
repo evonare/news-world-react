@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 
 
 export class News extends Component {
+capitalizeFirstLetter=(string) =>{
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
   // static defaultProps = {
   //   country: "in",
   //   pageSize: 8,
@@ -15,14 +18,15 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string,
   };
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     console.log("hello i am constructor");
     this.state = {
       articles: this.articles,
       loading: true,
       page: 1,
     };
+    document.title=`${this.capitalizeFirstLetter( this.props.category)} - NewsWorld`
   }
 
   // --life cycle method
