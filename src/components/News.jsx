@@ -7,27 +7,26 @@ import PropTypes from 'prop-types'
 
 
 export class News extends Component {
-  capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-  // static defaultProps = {
-  //   country: "in",
-  //   pageSize: 8,
-  //   category: "general",
-  // };
   static defaultProps = {
+    country: "in",
+    pageSize: 8,
+    category: "general",
+  };
+  static propTypes = {
     country: PropTypes.string,
     pageSize: PropTypes.number,
     category: PropTypes.string,
   };
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
   constructor(props) {
     super(props);
-    console.log("hello i am constructor");
     this.state = {
-      articles: this.articles,
-      loading: true,
+      articles: [],
+      loading: false,
       page: 1,
-      totalResults: 0,
+      totalResults: 0
     };
     document.title = `${this.capitalizeFirstLetter(
       this.props.category
@@ -49,24 +48,21 @@ export class News extends Component {
   }
 
   async componentDidMount() {
-    this.updateNews()
+    this.updateNews();
   }
   handlePrevClick = async () => {
-    
     this.setState({
-      page: this.state.page - 1
+      page: this.state.page - 1,
     });
     this.updateNews();
-
   };
   handleNextClick = async () => {
     this.setState({
-      page: this.state.page + 1
+      page: this.state.page + 1,
     });
     this.updateNews();
-
   };
-  fetchMoreData =async () => {
+  fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=db1a201e0e1f4f1793d7c37f91cd7b5d&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -74,7 +70,7 @@ export class News extends Component {
     let data = await fetch(url);
     let jsonData = await data.json();
     this.setState({
-      articles: this.state.articles.concat (jsonData.articles ),
+      articles: this.state.articles.concat(jsonData.articles),
       totalResults: jsonData.totalResults,
       loading: false,
     });
@@ -93,7 +89,7 @@ export class News extends Component {
           hasMore={this.state.articles.length !== this.state.totalResults}
           loader={<Spinner />}
         >
-          <div>
+          <div className="container">
             <div className="row">
               {/* {!this.state.loading && */}
               {this.state.articles.map((element) => {
