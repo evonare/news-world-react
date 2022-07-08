@@ -13,32 +13,32 @@ export default class App extends Component {
         <Router>
           <NavBar />
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <News pageSize={this.pageSize} country="in" category="general" />
             </Route>
-            <Route path="/buisness">
+            <Route exact path="/buisness">
               <News pageSize={this.pageSize} country="in" category="buisness" />
             </Route>
-            <Route path="/entertainment">
+            <Route exact path="/entertainment">
               <News
                 pageSize={this.pageSize}
                 country="in"
                 category="entertainment"
               />
             </Route>
-            <Route path="/general">
+            <Route exact path="/general">
               <News pageSize={this.pageSize} country="in" category="general" />
             </Route>
-            <Route path="/health">
+            <Route exact path="/health">
               <News pageSize={this.pageSize} country="in" category="health" />
             </Route>
-            <Route path="/science">
+            <Route exact path="/science">
               <News pageSize={this.pageSize} country="in" category="science" />
             </Route>
-            <Route path="/sports">
+            <Route exact path="/sports">
               <News pageSize={this.pageSize} country="in" category="sports" />
             </Route>
-            <Route path="/technology">
+            <Route exact path="/technology">
               <News
                 pageSize={this.pageSize}
                 country="in"
