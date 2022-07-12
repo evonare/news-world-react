@@ -37,14 +37,17 @@ export class News extends Component {
   async updateNews() {
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=db1a201e0e1f4f1793d7c37f91cd7b5d&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
-
+    this.props.setProgress(10);
     let data = await fetch(url);
+    this.props.setProgress(30);
     let jsonData = await data.json();
+    this.props.setProgress(70);
     this.setState({
       articles: jsonData.articles,
       totalResults: jsonData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -88,7 +91,7 @@ export class News extends Component {
           hasMore={this.state.articles.length !== this.state.totalResults}
           loader={<Spinner />}
         >
-          <div className="container">
+          <div className="">
             <div className="row">
               {/* {!this.state.loading && */}
               {this.state.articles.map((element) => {
