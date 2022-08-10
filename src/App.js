@@ -9,7 +9,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const App =()=> {
  const pageSize = 5;
   const [progress, setProgress]=useState(0)
-  const apiKey =process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiKey = process.env.REACT_APP_NEWS_API;
+
+
     return (
       <div>
         <Router>
@@ -23,7 +26,6 @@ const App =()=> {
           <Switch>
             <Route exact path="/">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="general"
                 pageSize={pageSize}
@@ -31,19 +33,18 @@ const App =()=> {
                 category="general"
               />
             </Route>
-            <Route exact path="/buisness">
+            <Route exact path="/business">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
-                key="buisness"
+                
+                key="business"
                 pageSize={pageSize}
                 country="in"
-                category="buisness"
+                category="business"
               />
             </Route>
             <Route exact path="/entertainment">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="entertainment"
                 pageSize={pageSize}
@@ -53,7 +54,6 @@ const App =()=> {
             </Route>
             <Route exact path="/general">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="general"
                 pageSize={pageSize}
@@ -63,7 +63,6 @@ const App =()=> {
             </Route>
             <Route exact path="/health">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="health"
                 pageSize={pageSize}
@@ -73,7 +72,6 @@ const App =()=> {
             </Route>
             <Route exact path="/science">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="science"
                 pageSize={pageSize}
@@ -83,7 +81,6 @@ const App =()=> {
             </Route>
             <Route exact path="/sports">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="sports"
                 pageSize={pageSize}
@@ -93,7 +90,6 @@ const App =()=> {
             </Route>
             <Route exact path="/technology">
               <News
-                apiKey={apiKey}
                 setProgress={setProgress}
                 key="technology"
                 pageSize={pageSize}
